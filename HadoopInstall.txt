@@ -1,0 +1,118 @@
+HADOOP INSTALLATION 
+java -version
+
+sudo apt-get install default-jdk
+
+sudo apt-get update
+
+sudo apt-get upgrade
+
+sudo addgroup hadoop
+
+sudo adduser --ingroup hadoop hduser
+
+sudo adduser hduser sudo
+
+sudo apt-get install openssh-server
+
+su hduser
+
+ss-keygen -t rsa -P " "
+
+cat #HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+
+ssh localhost
+
+exit
+
+sudo chmod 777 Downloads
+
+cd Downloads/
+
+ls
+
+sudo tar -xvzf hadoop-3.2.2.tar.gz
+
+ls
+
+sudo mv hadoop-3.2.2 /ur/local/hadoop
+
+sudo chown -R hduser:hadoop/usr/local
+
+sudo chown -R hduser:hadoop/usr/local/hadoop
+
+sudo chmod -R 777 /usr/local/hadoop
+
+su hduser
+
+cd /usr/local
+
+cd hadoop
+
+sudo gedit ~/.bashrc [ write code at end of the file ]
+
+source ~/.bashrc
+
+ls
+cd etc
+ls
+cd hadoop
+ls
+
+sudo gedit hadoop-env.sh
+[enter content of line25 below java implemantation]
+
+sudo gedit core-site.xml
+[enter content in configuration]
+
+sudo gedit hdfs-site.xml
+[enter content in configuration]
+
+sudo gedit yarn-site.xml
+[enter content in configuration]
+
+cp mapred-site.xml.template mapred-site.xml
+
+ls
+
+sudo gedit mapred-site.xml 
+[enter content in configuration]
+
+cd ..
+cd ..
+cd .. .......[usr/local]
+
+sudo mkdir -p /usr/local/hadoop_tmp/hdfs/namenode
+
+sudo mkdir -p /usr/local/hadoop_tmp/hdfs/datanode
+
+ls
+
+cd hadoop_temp/
+
+ls
+
+cd hdfs/
+
+ls
+
+cd ..
+
+cd..   [usr/local]
+
+sudo chown -R hduser /usr/local/hadoop_temp
+
+sudo chmod -R 777  /usr/local/hadoop_temp/hdfs/datanode
+
+sudo chmod -R 777  /usr/local/hadoop_temp/hdfs/namenode
+
+hdfs namenode -format 
+
+start 
+
+
+
+
+
+
+

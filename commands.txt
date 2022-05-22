@@ -1,0 +1,42 @@
+Design a distributed application using MapReduce(Using Java) which processes a log file of a system.
+List out the users who have logged for maximum period on the system. Use simple log file from the
+Internet and process it using a pseudo distribution mode on Hadoop platform.
+......................................................................................................................
+
+su - hdoop
+sudo mkdir analyzelogs
+sudo chmod -R 777 analyzelogs/
+sudo chown -R hdoop analyzelogs/
+cd analyzelogs/
+cd ..
+sudo [path of count_logged_users]/* ~/analyzelogs/
+cd analyzelogs/
+convert text file to csv [access_log_]
+seperated by - save as formats-.csv format
+see ls in analyzelogs/
+now we are in analyzelogs/
+ls -ltr
+ls -al
+sudo chmod +r *.*
+export CLASSPATH="$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.2.2.jar:$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-common-3.2.2.jar:$HADOOP_HOME/share/hadoop/common/hadoop-common-3.2.2.jar:~/analyzelogs/SalesCountry/*:$HADOOP_HOME/lib/*"
+
+javac -d . SalesMapper.java SalesCounreyReducer.java SalesCountryReducer.java
+
+create a file Manifest.txt
+sudo gedit Manifest.txt 
+paste : Main-Class: SalesCountry.SalesCountryDriver
+
+jar -cfm analyzelogs.jar Manifest.txt SalesCountry/*.class
+cd
+start hadoop
+dfs and yarn .sh
+
+cd analyzelogs/
+sudo mkdir ~/input2000
+sudo cp access_log_short.csv ~/input2000/
+$HADOOP_HOME/bin/hdfs dfs -put ~/input2000 /
+
+$HADOOP_HOME/bin/hadoop jar analyzelogs.jar /input2000 /output2000
+
+$HADOOP_HOME/bin/hdfs dfs -cat /output2000/part-00000
+

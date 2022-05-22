@@ -1,0 +1,31 @@
+HIVE 
+
+show database;
+
+create table products(Pid INT , Pname STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH '/home/yashashree_125/tables.txt' into able products;
+
+select * from products ;
+
+alter table proucts
+add columns (city string) ;
+
+desc products ; 
+
+hive> SELECT c.ID, c.NAME, c.AGE, o.AMOUNT
+FROM CUSTOMERS c JOIN ORDERS o
+ON (c.ID = o.CUSTOMER_ID);
+
+hive> SELECT c.ID, c.NAME, o.AMOUNT, o.DATE
+FROM CUSTOMERS c
+LEFT OUTER JOIN ORDERS o
+ON (c.ID = o.CUSTOMER_ID);
+
+hive> SELECT c.ID, c.NAME, o.AMOUNT, o.DATE
+FROM CUSTOMERS c
+FULL OUTER JOIN ORDERS o
+ON (c.ID = o.CUSTOMER_ID);
